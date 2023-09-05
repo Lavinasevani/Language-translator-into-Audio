@@ -1,0 +1,19 @@
+from gtts import gTTS
+import os
+from googletrans import Translator
+
+translator = Translator()
+lang1 = input("Enter your language: ")
+text = input("Enter Text: ")
+lang2 = input("Enter the language you want to translate to: ")
+translation = translator.translate(text, src=lang1, dest=lang2)
+audio = gTTS(text=translation.text, lang=lang2)
+
+print(f"\nOriginal text: {text}")
+print(f"Translated text: {translation.text}")
+
+audio.save("Msg.mp3")
+print("Successfully saved as Msg.mp3")
+
+
+os.system("start Msg.mp3")
